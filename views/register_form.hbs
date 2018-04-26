@@ -9,33 +9,38 @@
 				<li> Welcome {{username}}</a></li>
 				<li><a href="/logout">Logout</a></li>
 			{{else}}
-				<li class="active"><a href="/">Login</a></li>
-				<li><a href="/register">Register</a></li>
+				<li><a href="/">Login</a></li>
+				<li class="active"><a href="/register">Register</a></li>
 			{{/if}}
 		</ul>
 	</div>
 </nav>
 <div class="container">
+	{{# if errors }}
+	    {{# each errors }}
+	          <p class="alert alert-danger">{{ this.msg }}</p>
+	    {{/each}}
+	{{/if}}
 	<form action="/register_action" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="First Name">First Name:</label>
-			<input type="text" class="form-control" id="fname" name="fname" required value=""/>
+			<input type="text" class="form-control" id="fname" name="fname" value=""/>
 		</div>
 		<div class="form-group">
 			<label for="Last Name">Last Name:</label>
-			<input type="text" class="form-control" id="lname" name="lname" required  value=""/>
+			<input type="text" class="form-control" id="lname" name="lname"  value=""/>
 		</div>
 		<div class="form-group">
 			<label for="Mobile No">Mobile No:</label>
-			<input type="number" class="form-control" id="mobile_no" name="mobile_no" required  value=""/>
+			<input type="number" class="form-control" id="mobile_no" name="mobile_no"  value=""/>
 		</div>
 		<div class="form-group">
 			<label for="Email Id">Email Id:</label>
-			<input type="email" class="form-control" id="email_id" name="email_id" required  value=""/>
+			<input type="text" class="form-control" id="email_id" name="email_id"  value=""/>
 		</div>
 		<div class="form-group">
 			<label for="Password">Password:</label>
-			<input type="text" class="form-control" id="password" name="password" required  value=""/>
+			<input type="text" class="form-control" id="password" name="password"  value=""/>
 		</div>
 		<div class="form-group">
 			<label for="Profile Picture">Profile Picture:</label>

@@ -16,10 +16,15 @@
 	</div>
 </nav>
 <div class="container">
+	{{# if errors }}
+	    {{# each errors }}
+	          <p class="alert alert-danger">{{ this.msg }}</p>
+	    {{/each}}
+	{{/if}}
 	<form action="/login_action" method="post">
 		<div class="form-group">
 			<label for="email">Email address:</label>
-			<input type="email" class="form-control" id="email" name="email_id" value="yogesh@healthdekho.com">
+			<input type="text" class="form-control" id="email" name="email_id" value="yogesh@healthdekho.com">
 		</div>
 		<div class="form-group">
 			<label for="pwd">Password:</label>
@@ -27,10 +32,4 @@
 		</div>
 		<button type="submit" class="btn btn-default">Submit</button>
 	</form>
-
-	{{# if errors }}
-	    {{# each errors }}
-	          <p class="alert alert-danger">{{ this.msg }}</p>
-	    {{/each}}
-	{{/if}}
 </div>

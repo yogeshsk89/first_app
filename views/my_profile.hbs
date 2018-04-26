@@ -16,30 +16,40 @@
 	</div>
 </nav>
 <div class="container">
+	{{# if errors }}
+	    {{# each errors }}
+	          <p class="alert alert-danger">{{ this.msg }}</p>
+	    {{/each}}
+	{{/if}}
 	<form action="/update_profile_action" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="user_id" id="user_id" value="{{user_id}}" />
+		<input type="hidden" name="previous_image" id="previous_image" value="{{profile_pic}}" />
 		<div class="form-group">
-			<img src="/uploads/{{profile_pic}}" style="width:30%;" />
+			{{#if profile_pic}}
+				<img src="/uploads/{{profile_pic}}" style="width:20%;border:1px solid #ccc;" />
+			{{else}}
+				<img src="/images/dummy.png" style="width:20%;border:1px solid #ccc;" />
+			{{/if}}
 		</div>
 		<div class="form-group">
 			<label for="First Name">First Name:</label>
-			<input type="text" class="form-control" id="fname" name="fname" required value="{{fname}}"/>
+			<input type="text" class="form-control" id="fname" name="fname" value="{{fname}}"/>
 		</div>
 		<div class="form-group">
 			<label for="Last Name">Last Name:</label>
-			<input type="text" class="form-control" id="lname" name="lname" required  value="{{lname}}"/>
+			<input type="text" class="form-control" id="lname" name="lname" value="{{lname}}"/>
 		</div>
 		<div class="form-group">
 			<label for="Mobile No">Mobile No:</label>
-			<input type="number" class="form-control" id="mobile_no" name="mobile_no" required  value="{{mobile_no}}"/>
+			<input type="number" class="form-control" id="mobile_no" name="mobile_no" value="{{mobile_no}}"/>
 		</div>
 		<div class="form-group">
 			<label for="Email Id">Email Id:</label>
-			<input type="email" class="form-control" id="email_id" name="email_id" required  value="{{email_id}}"/>
+			<input type="text" class="form-control" id="email_id" name="email_id" value="{{email_id}}"/>
 		</div>
 		<div class="form-group">
 			<label for="Password">Password:</label>
-			<input type="text" class="form-control" id="password" name="password" required  value="{{password}}"/>
+			<input type="text" class="form-control" id="password" name="password" value="{{password}}"/>
 		</div>
 		<div class="form-group">
 			<label for="Profile Picture">Profile Picture:</label>
